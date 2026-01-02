@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from '@/firebase/auth';
-import { LoginService, LogoutService } from "@/services/authService";
+import { auth } from '../firebase/auth';
+import { LoginService, LogoutService } from "../services/authService";
 import { AuthContext } from "./AuthContext";
-import type { AuthUser } from "@/types/auth";
+import type { AuthUser } from "../types/auth";
 
 export const AuthProvider=({children}:{children:React.ReactNode})=>{
     const [user,setUser]=useState<AuthUser|null>(null);

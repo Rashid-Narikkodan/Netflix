@@ -1,10 +1,9 @@
 import '../styles/variable.css'
+import Login from '../pages/login/Login'
 function App() {
   return (
     <>
-     <div className="arc">
-
-     </div>
+  <Login />
     </>
   )
 }
