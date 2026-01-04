@@ -1,14 +1,31 @@
+import type { LucideIcon } from "lucide-react";
 
-const ReasonCardSet = () => {
-  return (
-    <div>
-        <span className="mb-4 p-5 text-3xl font-semibold text-white sm:text-xl md:text-3xl">
-            More reason to join
-        </span>
-        
-
-    </div>
-  )
+interface ReasonCardProps {
+  title: string;
+  description: string;
+  icon: LucideIcon;
 }
 
-export default ReasonCardSet
+const ReasonCard = ({ title, description, icon: Icon }: ReasonCardProps) => {
+  return (
+    <div className="relative min-h-65 rounded-xl bg-linear-to-br from-[#192043] to-[#210E17] p-6 overflow-hidden">
+      {/* Text */}
+      <div className="max-w-[75%] space-y-2">
+        <p className="text-2xl font-bold text-white">
+          {title}
+        </p>
+        <p className="text-sm text-gray-400 leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      {/* Icon */}
+      <Icon
+        size={56}
+        className="absolute bottom-5 right-5 text-pink-600 opacity-80"
+      />
+    </div>
+  );
+};
+
+export default ReasonCard;

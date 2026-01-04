@@ -9,17 +9,14 @@ const Header = () => {
 
   return (
     <header className="absolute top-0 left-0 w-full z-50">
-      <div className="mx-auto flex max-w-300 items-center justify-between px-6 py-5">
-        {/* Logo */}
+      <div className="mx-auto flex max-w-350 items-center justify-between px-6 py-5">
         <img
           src={Netflix}
           alt="Netflix"
           className="h-10 w-auto"
         />
 
-        {/* Right Actions */}
         <div className="flex items-center gap-4">
-          {/* Language Selector */}
           <div className="relative">
             <select
               className="appearance-none rounded border border-zinc-500 bg-black/60 px-4 py-1.5 text-sm text-white focus:outline-none"
@@ -29,7 +26,6 @@ const Header = () => {
             </select>
           </div>
 
-          {/* Sign In Button */}
           <button
             onClick={handleClick}
             className="rounded bg-red-600 px-4 py-1.5 text-sm font-semibold text-white hover:bg-red-700"

@@ -4,7 +4,8 @@ type InputProps = {
   value: string;
   onChange: (v: string) => void;
   error?: string | null;
-};
+}
+;
 
 const Input = ({
   label,

@@ -27,7 +27,7 @@ const HeroContent = () => {
         {/* Hero Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
         <div className="max-w-3xl text-center text-white">
-          <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
+          <h1 className="text-5xl font-extrabold leading-tight md:text-6xl">
             Unlimited movies, <br /> shows, and more
           </h1>
 
@@ -43,7 +43,7 @@ const HeroContent = () => {
             <form onSubmit={handleGetStarted}>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-center">
 
-            <Input label='Email address' value={email} onChange={setEmail} type="email" error={error}/>
+            <Input label='Email address' value={email} onChange={setEmail} type="email" error={error} />
 
             <button type="submit" className={`bg-red-600 font-bold hover:bg-red-700 py-3 ${error?'mb-10':'mb-4'} px-6 rounded`}>
               <span>Get Started</span>
