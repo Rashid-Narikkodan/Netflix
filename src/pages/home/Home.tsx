@@ -5,10 +5,11 @@ import TrendingMovies from "../../components/movie/TrendingCarousel";
 import ReasonCardSet from "../../components/movie/ReasonCardSet";
 import FAQAccordion from "../../components/FAQAccordion";
 import { FAQS } from "../../utils/FAQs";
+import Footer from "../../components/layout/Footer";
 
 const Home = () => {
   return (
-      <div className="text-white bg-black min-h-1000">
+      <div className="text-white bg-black">
 
         <section
           className="relative h-screen bg-cover bg-center"
@@ -23,6 +24,7 @@ const Home = () => {
           <TrendingMovies />
           <ReasonCardSet />
           <FAQAccordion items={FAQS}/>
+          <Footer />
         </section>
 
       </div>
