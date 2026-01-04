@@ -5,7 +5,7 @@ import { createContext } from "react";
 interface AuthContextType{
     user:AuthUser | null,
     isLoading:boolean,
-    signup:(email:string,password:string,confirmPassword:string)=>Promise<void>,
+    signup:(email:string,password:string)=>Promise<void>,
     login:(email:string,password:string)=>Promise<void>
     logout:()=>Promise<void>
 }
