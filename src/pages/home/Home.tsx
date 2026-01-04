@@ -2,9 +2,10 @@ import Background from "../../assets/images/netflix-bg.jpg";
 import Header from "../../components/layout/Header";
 import HeroContent from "../../components/HeroContent";
 import TrendingMovies from "../../components/movie/TrendingCarousel";
-import ReasonCardSet from "../../components/movie/ReasonCardSet";
+import ReasonCardSet from "../../components/ReasonCardSet";
 import FAQAccordion from "../../components/FAQAccordion";
 import { FAQS } from "../../utils/FAQs";
+
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="px-25">
+        <section className="md:px-25 ">
           <TrendingMovies />
           <ReasonCardSet />
           <FAQAccordion items={FAQS}/>
