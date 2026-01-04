@@ -1,8 +1,5 @@
-export interface Movie {
-  id: string
-  title: string
-  overview: string
-  posterUrl: string
-  rating: number
-  genres: string[]
-}
+export interface Movie{
+  id: number;
+  title: string;
+  poster_path: string | null;
+};

@@ -1,18 +1,12 @@
-import Header from "../../components/layout/Header";
-import Background from "../../assets/images/netflix-bg.jpg";
-import HeroContent from "../../components/HeroContent";
+import HeroSection from "./HeroSection";
+import Section from "./Section";
 const Home = () => {
   return (
-    <div
-      className="relative h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${Background})` }}>
-
-      <Header />
-      <div className="flex justify-center h-screen items-center">
-        <HeroContent />
-      </div>
-
+    <div className="text-white bg-black">
+      <HeroSection />
+      <Section />
     </div>
+
   );
 };
 
