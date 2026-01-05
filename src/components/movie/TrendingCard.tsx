@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { Movie } from "../../types/movie";
 
 const TrendingCard = ({ card, index }: { card: Movie; index: number }) => {
@@ -18,4 +19,4 @@ const TrendingCard = ({ card, index }: { card: Movie; index: number }) => {
   );
 };
 
-export default TrendingCard;
+export default memo(TrendingCard);

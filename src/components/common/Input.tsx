@@ -4,6 +4,7 @@ type InputProps = {
   value: string;
   onChange: (v: string) => void;
   error?: string | null;
+  style?:string,
 }
 ;
 
@@ -13,6 +14,7 @@ const Input = ({
   value,
   onChange,
   error,
+  style
 }: InputProps) => {
   return (
     <div className='mb-4'>
@@ -25,7 +27,7 @@ const Input = ({
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="peer w-full bg-transparent px-4 pt-5 pb-2 text-white focus:outline-none"
+          className={`peer w-full bg-transparent px-4 pt-5 pb-2 text-white focus:outline-none ${style? style :''}`}
         />
 
         <label
