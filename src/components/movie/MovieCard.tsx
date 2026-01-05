@@ -1,74 +1,98 @@
+import { useEffect } from "react";
 
-interface MovieCardProps {
+type Movie = {
   title: string;
+  image: string;
   year: string;
-  rating: string;
+  certification: string;
+  type: string;
   genres: string[];
   description: string;
-  imageUrl: string;
-  onClick?: () => void;
-}
+};
 
-const MovieCard = ({
-  title,
-  year,
-  rating,
-  genres,
-  description,
-  imageUrl,
-  onClick,
-}: MovieCardProps) => {
+type MovieModalProps = {
+  movie: Movie | null;
+  onClose: () => void;
+};
+
+export default function MovieModal({ movie, onClose }: MovieModalProps) {
+  
+  
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  if (!movie) return null;
+
   return (
-    <div
-      onClick={onClick}
-      className="group relative w-64 cursor-pointer overflow-hidden rounded-xl bg-[#141414] shadow-lg transition-transform hover:scale-105"
-    >
-      {/* Movie Image */}
-      <div className="relative h-96 w-full">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
-      </div>
+    <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center">
+      <div className="relative w-full max-w-5xl bg-neutral-900 text-white rounded-lg overflow-hidden">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          aria-label="Close modal"
+          className="absolute top-4 right-4 z-20 text-2xl text-white/80 hover:text-white"
+        >
+          ×
+        </button>
 
-      {/* Movie Content */}
-      <div className="p-4">
-        <h2 className="mb-2 font-serif text-xl font-bold text-white">{title}</h2>
+        {/* TOP IMAGE */}
+        <div className="relative h-90">
+          <img
+            src={movie.image}
+            alt={movie.title}
+            className="w-full h-full object-cover"
+          />
 
-        {/* Tags */}
-        <div className="mb-2 flex flex-wrap gap-1">
-          <span className="rounded bg-white/20 px-2 py-0.5 text-xs font-medium text-gray-200">
-            {year}
-          </span>
-          <span className="rounded bg-white/20 px-2 py-0.5 text-xs font-medium text-gray-200">
-            {rating}
-          </span>
-          {genres.map((genre) => (
-            <span
-              key={genre}
-              className="rounded bg-white/20 px-2 py-0.5 text-xs font-medium text-gray-200"
-            >
-              {genre}
-            </span>
-          ))}
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
+
+          {/* Title overlay */}
+          <div className="absolute bottom-6 left-6">
+            <h1 className="text-3xl font-bold">{movie.title}</h1>
+          </div>
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-gray-300 line-clamp-3">{description}</p>
+        {/* BOTTOM DETAILS */}
+        <div className="p-6 space-y-5">
+          {/* Meta */}
+          <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-400">
+            <span>{movie.year}</span>
+            <span className="border px-2 py-0.5 rounded">
+              {movie.certification}
+            </span>
+            <span>{movie.type}</span>
+          </div>
 
-        {/* CTA */}
-        {onClick && (
-          <button className="mt-3 flex items-center gap-2 rounded-md bg-[#e50914] px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-[#b20710]">
-            Get Started
-            <span className="text-lg leading-none">&rsaquo;</span>
+          {/* Genres */}
+          <div className="flex flex-wrap gap-2">
+            {movie.genres.map((genre) => (
+              <span
+                key={genre}
+                className="bg-neutral-800 px-3 py-1 rounded text-sm"
+              >
+                {genre}
+              </span>
+            ))}
+          </div>
+
+          {/* Description */}
+          <p className="text-sm text-neutral-300 max-w-3xl">
+            {movie.description}
+          </p>
+
+          {/* CTA */}
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-2 rounded text-sm font-medium"
+          >
+            Get Started →
           </button>
-        )}
+        </div>
       </div>
     </div>
   );
-};
-
-export default MovieCard;
+}
