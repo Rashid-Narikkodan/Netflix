@@ -1,13 +1,11 @@
-import Loader from "../../components/common/Loader"
+import ProtectedHeader from "../../components/layout/ProtectedHeader"
 import { useAuth } from "../../context/AuthContext"
 const Home = () => {
   const {logout,isLoading} = useAuth()
   return (
     <div className="text-white">
-      {
-        isLoading?<Loader />:
-      <button className="text-white bg-red-500 rounded py-2 px-4" onClick={()=>logout()}>Logout</button>
-    }
+      <ProtectedHeader />
+      <button onClick={()=>logout()} className="p-14">Logout</button>
     </div>
   )
 }
