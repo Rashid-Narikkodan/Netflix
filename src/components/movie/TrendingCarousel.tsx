@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getTrendingMovies } from "../../services/movieService";
+import { getTrendingMovies } from "../../services/tmdb.service";
 import TrendingCard from "./TrendingCard";
 import type { MovieDetails } from "../../types/movie";
 import "../../styles/trending.css";

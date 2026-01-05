@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase/auth';
-import { LoginService, LogoutService, SignUpService } from "../services/authService";
+import { LoginService, LogoutService, SignUpService } from "../services/auth.service";
 import { AuthContext } from "./AuthContext";
 import type { AuthUser } from "../types/auth";
 import { validateCredentials } from "../utils/validateCredentials";

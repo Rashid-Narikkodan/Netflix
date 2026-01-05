@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getRandomMovie } from "../../services/movieService";
+import { getRandomMovie } from "../../services/tmdb.service";
 import ProtectedHeader from "../layout/ProtectedHeader";
 import type { MovieDetails } from "../../types/movie";
 import HeroContent from "./HeroContent";
@@ -35,7 +35,28 @@ const HeroBanner = () => {
 
       <ProtectedHeader />
       <HeroContent movie={movie} />
-      
+
+      <div
+        className="
+      pointer-events-none
+      absolute bottom-0 left-0 right-0
+      h-48
+      bg-linear-to-b
+      from-transparent
+      via-[#050505]/30
+      to-[#161616]
+    "
+      />
+
+      {/* Blur layer */}
+      <div
+        className="
+      pointer-events-none
+      absolute bottom-0 left-0 right-0
+      backdrop-blur-xs
+      bg-[#000000]/10
+    "
+      />
     </div>
   );
 };
