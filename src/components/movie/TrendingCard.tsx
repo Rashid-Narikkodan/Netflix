@@ -1,12 +1,9 @@
 import { memo } from "react";
 import type { Movie } from "../../types/movie";
 
-const TrendingCard = ({ card, index }: { card: Movie; index: number }) => {
-  const handleClick=()=>{
-    
-  }
+const TrendingCard = ({ card, index, onClick }: { card: Movie; index: number, onClick:()=>void }) => {
   return (
-    <div className="trending-card" onClick={handleClick}>
+    <div className="trending-card" onClick={()=>onClick()}>
       {card.poster_path && (
         <img
           src={`https://image.tmdb.org/t/p/w300${card.poster_path}`}
