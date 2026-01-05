@@ -1,6 +1,6 @@
 import Loader from "../../components/common/Loader"
 import { useAuth } from "../../context/AuthContext"
-const Dashboard = () => {
+const Home = () => {
   const {logout,isLoading} = useAuth()
   return (
     <div className="text-white">
@@ -12,4 +12,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Home

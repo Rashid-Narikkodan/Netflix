@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "../pages/home/LandPage";
+import LandingPage from "../pages/home/LandPage";
 import Auth from "../pages/auth/auth";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
-import Dashboard from "../pages/home/Dashboard";
+import Home from "../pages/home/Home";
 
 import ProtectedRoute from "../components/common/ProtectedRoutes";
 import PublicRoute from "../components/common/PublicRoutes";
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public landing page */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
 
         {/* Public auth routes */}
         <Route element={<PublicRoute />}>
@@ -26,7 +26,7 @@ function App() {
 
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>
