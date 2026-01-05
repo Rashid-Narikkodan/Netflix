@@ -1,84 +1,98 @@
-import { useNavigate } from "react-router-dom";
-import type { MovieDetails } from "../../types/movie";
+import { useEffect } from "react";
 
-interface MovieProps {
-  movie: MovieDetails | null;
+type Movie = {
+  title: string;
+  image: string;
+  year: string;
+  certification: string;
+  type: string;
+  genres: string[];
+  description: string;
+};
+
+type MovieModalProps = {
+  movie: Movie | null;
   onClose: () => void;
-}
+};
 
-const MovieCard = ({ movie, onClose }: MovieProps) => {
-  const navigate = useNavigate();
+export default function MovieModal({ movie, onClose }: MovieModalProps) {
+  
+  
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   if (!movie) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
-      onClick={onClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="relative w-160 overflow-hidden rounded-xl bg-[#141414] shadow-2xl"
-      >
-        {/* Close */}
+    <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center">
+      <div className="relative w-full max-w-5xl bg-neutral-900 text-white rounded-lg overflow-hidden">
+        {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-30 flex h-12 w-12 items-center justify-center rounded-full border border-white/80 bg-black/00 text-3xl text-white hover:bg-black/10"
-          aria-label="Close"
+          aria-label="Close modal"
+          className="absolute top-4 right-4 z-20 text-2xl text-white/80 hover:text-white"
         >
           ×
         </button>
 
-        {/* Poster */}
-        <div className="relative h-90 w-full">
+        {/* TOP IMAGE */}
+        <div className="relative h-90">
           <img
-            src={`https://image.tmdb.org/t/p/w780${movie.backdrop_path}`}
+            src={movie.image}
             alt={movie.title}
-            className="h-full w-full object-cover"
+            className="w-full h-full object-cover"
           />
 
-          {/* Heavy Netflix gradient */}
-          <div className="absolute inset-0 bg-linear-to-t from-[#141414] via-[#141414]/60 to-transparent" />
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
+
+          {/* Title overlay */}
+          <div className="absolute bottom-6 left-6">
+            <h1 className="text-3xl font-bold">{movie.title}</h1>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="relative -mt-20 px-6 pb-6">
-          {/* Title */}
-          <h2 className="mb-3 text-2xl font-bold text-white">
-            {movie.title}
-          </h2>
-
-          {/* Meta Row */}
-          <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-gray-300">
-            <span className="font-medium text-white">
-              {movie.release_date?.split("-")[0]}
+        {/* BOTTOM DETAILS */}
+        <div className="p-6 space-y-5">
+          {/* Meta */}
+          <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-400">
+            <span>{movie.year}</span>
+            <span className="border px-2 py-0.5 rounded">
+              {movie.certification}
             </span>
+            <span>{movie.type}</span>
+          </div>
 
-            <span className="rounded bg-white/20 px-2 py-0.5">
-              ⭐ {movie.vote_average.toFixed(1)}
-            </span>
-
-            <span className="rounded bg-white/20 px-2 py-0.5">
-              Movie
-            </span>
+          {/* Genres */}
+          <div className="flex flex-wrap gap-2">
+            {movie.genres.map((genre) => (
+              <span
+                key={genre}
+                className="bg-neutral-800 px-3 py-1 rounded text-sm"
+              >
+                {genre}
+              </span>
+            ))}
           </div>
 
           {/* Description */}
-          <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-gray-300">
-            {movie.overview}
+          <p className="text-sm text-neutral-300 max-w-3xl">
+            {movie.description}
           </p>
 
           {/* CTA */}
           <button
-            onClick={() => navigate("/auth/signup")}
-            className="inline-flex items-center gap-2 rounded-md bg-[#e50914] px-6 py-2 text-sm font-semibold text-white hover:bg-[#b20710]"
+            type="button"
+            className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 px-6 py-2 rounded text-sm font-medium"
           >
-            Get Started
-            <span className="text-lg leading-none">›</span>
+            Get Started →
           </button>
         </div>
       </div>
     </div>
   );
-};
-
-export default MovieCard;
+}
