@@ -1,8 +1,4 @@
-// export interface Movie{
-//   id: number;
-//   title: string;
-//   poster_path: string | null;
-// };
+
 export interface MovieDetails{
   adult: boolean;
   backdrop_path: string | null;

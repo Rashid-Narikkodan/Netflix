@@ -3,9 +3,11 @@ import { getRandomMovie } from "../../services/tmdb.service";
 import ProtectedHeader from "../layout/ProtectedHeader";
 import type { MovieDetails } from "../../types/movie";
 import HeroContent from "./HeroContent";
+import MovieDetailsModal from "./modal/MovieDetailsModal";
 
 const HeroBanner = () => {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
+  const [open,setOpen] = useState(false)
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -34,7 +36,7 @@ const HeroBanner = () => {
       />
 
       <ProtectedHeader />
-      <HeroContent movie={movie} />
+      <HeroContent movie={movie} onClick={()=>setOpen(true)}/>
 
       <div
         className="
@@ -57,6 +59,7 @@ const HeroBanner = () => {
       bg-[#000000]/10
     "
       />
+     { open && movie &&<MovieDetailsModal movie={movie} onClose={()=>setOpen(false)}/>}
     </div>
   );
 };

@@ -38,7 +38,7 @@ export const getNowPlayingMovies = async (page = 1) => {
 
 export const getRandomMovie = async () => {
   const res = await tmdb.get('/movie/top_rated');
-
+  
   const movies = res?.data?.results;
   if (!Array.isArray(movies) || movies.length === 0) return null;
 
@@ -51,3 +51,16 @@ export const getRandomMovie = async () => {
   const randomIndex = Math.abs(entropy) % movies.length;
   return movies[randomIndex];
 };
+
+export const getRelatedMovies = async (movieId: number, page = 1) => {
+  const res = await tmdb.get(`/movie/${movieId}/recommendations`, {
+    params: { page }
+  });
+
+  if (res.status !== 200) {
+    throw new Error("TMDB related movies fetch failed");
+  }
+
+  return res.data.results; // array of MovieDetails
+};
+

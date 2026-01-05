@@ -4,9 +4,10 @@ import { Info } from "lucide-react";
 
 type Props = {
   movie: MovieDetails | null;
+  onClick:()=>void
 };
 
-const HeroContent = ({ movie }: Props) => {
+const HeroContent = ({ movie,onClick}: Props) => {
   if (!movie) return;
   const title = movie.title || movie.original_title;
   const year = movie.release_date
@@ -54,7 +55,7 @@ const HeroContent = ({ movie }: Props) => {
           ▶ Play
         </button>
 
-        <button className="flex items-center gap-2 rounded bg-gray-500/70 px-6 py-2 text-white font-semibold hover:bg-gray-500 transition">
+        <button onClick={onClick} className="flex items-center gap-2 rounded bg-gray-500/70 px-6 py-2 text-white font-semibold hover:bg-gray-500 transition">
           <Info /> More Info
         </button>
       </div>
