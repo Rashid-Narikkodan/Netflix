@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import type { MovieDetails } from "../../types/movie";
+import type { MovieDetails } from "../../../types/movie";
 
 interface MovieProps {
   movie: MovieDetails | null;

@@ -1,8 +1,8 @@
-import type { MovieDetails } from "../../types/movie";
+import type { MovieDetails } from "../../../types/movie";
 
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w780";
 
-const MovieRowCard = ({ movie }: { movie: MovieDetails }) => {
+const MovieRowCard = ({ movie, onClick }: { movie: MovieDetails, onClick:()=>void }) => {
   return (
     <div
       className="
@@ -17,6 +17,7 @@ const MovieRowCard = ({ movie }: { movie: MovieDetails }) => {
         hover:scale-110
         cursor-pointer
       "
+      onClick={onClick}
     >
       {/* Backdrop */}
       <img

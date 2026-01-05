@@ -1,6 +1,8 @@
 import type { MovieDetails } from "../../types/movie";
-import MovieRowCard from "./MovieRowCard";
+import MovieRowCard from "./cards/MovieRowCard";
 import '../../styles/movieRows.css'
+import { useState } from "react";
+import MovieDetailsModal from "./modal/MovieDetailsModal";
 
 type Props = {
   row: {
@@ -10,6 +12,9 @@ type Props = {
 };
 
 const MovieRow = ({ row }: Props) => {
+
+  const [selectedMovie, setSelectedMovie] = useState<MovieDetails|null>(null)
+
   return (
     <section className="px-6 py-4">
       {/* Row title */}
@@ -27,9 +32,11 @@ const MovieRow = ({ row }: Props) => {
         "
       >
         {row.movies.map((movie) => (
-          <MovieRowCard key={movie.id} movie={movie} />
+          <MovieRowCard key={movie.id} movie={movie} onClick={()=>setSelectedMovie(movie)}/>
         ))}
       </div>
+      {selectedMovie && <MovieDetailsModal movie={selectedMovie} onClose={()=>setSelectedMovie(null)}/>}
+
     </section>
   );
 };

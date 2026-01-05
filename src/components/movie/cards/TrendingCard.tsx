@@ -1,7 +1,7 @@
 import { memo } from "react";
-import type { Movie } from "../../types/movie";
+import type { MovieDetails } from "../../../types/movie";
 
-const TrendingCard = ({ card, index, onClick }: { card: Movie; index: number, onClick:()=>void }) => {
+const TrendingCard = ({ card, index, onClick }: { card: MovieDetails; index: number, onClick:()=>void }) => {
   return (
     <div className="trending-card" onClick={()=>onClick()}>
       {card.poster_path && (

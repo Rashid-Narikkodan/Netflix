@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getTrendingMovies } from "../../services/tmdb.service";
-import TrendingCard from "./TrendingCard";
+import TrendingCard from "./cards/TrendingCard";
 import type { MovieDetails } from "../../types/movie";
 import "../../styles/trending.css";
-import MovieCard from "./MovieCard";
+import MovieCard from "./modal/TrendingModal";
 
 const TrendingMovies = () => {
   const [movies, setMovies] = useState<MovieDetails[]>([]);
