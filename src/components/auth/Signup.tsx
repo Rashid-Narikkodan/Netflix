@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import Input from "../common/Input";
 import { useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { isAxiosError } from "axios";
 
 const Signup = () => {
   const { signup } = useAuth();
@@ -53,10 +54,33 @@ const Signup = () => {
     if (hasError) return;
 
     try {
-      await signup(email.trim(), password.trim());
-    } catch {
-      setFormError("Signup failed. Please check your details and try again.");
-    }
+  const data = await signup(email.trim(), password.trim());
+  console.log("Success:", data);
+  // Redirect happens automatically via your useEffect listener
+} catch (error: unknown) {
+  let message = "An unexpected error occurred.";
+  if(isAxiosError(error)){
+    // Firebase error codes
+    switch (error.code) {
+    case 'auth/email-already-in-use':
+      message = "This email is already registered. Try logging in instead.";
+      break;
+    case 'auth/invalid-email':
+      message = "The email address is not valid.";
+      break;
+      case 'auth/weak-password':
+        message = "The password is too weak. Please use at least 6 characters.";
+        break;
+        case 'auth/network-request-failed':
+          message = "Network error. Please check your internet connection.";
+          break;
+          default:
+            message = error.message || "Signup failed.";
+          }
+        }
+          
+  setFormError(message);
+}
   };
 
   return (

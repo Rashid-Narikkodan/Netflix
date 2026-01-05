@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { memo } from "react";
 
 interface ReasonCardProps {
   title: string;
@@ -28,4 +29,4 @@ const ReasonCard = ({ title, description, icon: Icon }: ReasonCardProps) => {
   );
 };
 
-export default ReasonCard;
+export default memo(ReasonCard);
