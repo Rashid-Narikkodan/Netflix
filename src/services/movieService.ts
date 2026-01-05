@@ -36,3 +36,20 @@ export const getPopularMovies = (page = 1) =>
 // Now playing
 export const getNowPlayingMovies = () =>
   tmdb.get("/movie/now_playing");
+
+export const getRandomMovie = async () => {
+  const res = await tmdb.get('/movie/top_rated');
+
+  const movies = res?.data?.results;
+  if (!Array.isArray(movies) || movies.length === 0) return null;
+
+  // Mix multiple entropy sources
+  const entropy =
+    Date.now() ^
+    performance.now() ^
+    Math.floor(Math.random() * 1e9);
+
+  const randomIndex = Math.abs(entropy) % movies.length;
+  return movies[randomIndex];
+};
+

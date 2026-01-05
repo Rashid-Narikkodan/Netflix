@@ -18,7 +18,7 @@ const ProtectedHeader = () => {
 
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-linear-to-b from-black/90 to-transparent">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Left */}
         <div className="flex items-center gap-4 md:gap-10">
 
