@@ -8,25 +8,24 @@ import Watch from "../../pages/watch/Watch";
 import Loader from "../common/Loader";
 import { useWatch } from "../../context/watchContext";
 
-
 const HeroBanner = () => {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
-  const [selectedMovie,setSelectedMovie] = useState<MovieDetails|null>(null)
+  const [selectedMovie, setSelectedMovie] = useState<MovieDetails | null>(null);
   const [watchMovieId, setWatchMovieId] = useState<number | null>(null);
   const [isLoading, setLoading] = useState(true);
-  const {setWatchingMovieId} = useWatch()
+  const { setWatchingMovieId } = useWatch();
 
   useEffect(() => {
     const fetchMovie = async () => {
       const m = await getRandomMovie();
       console.log(m);
       setMovie(m);
-      setLoading(false)
+      setLoading(false);
     };
     fetchMovie();
   }, []);
 
-  if(isLoading) return <Loader/>
+  if (isLoading) return <Loader />;
 
   const backgroundImage = `https://image.tmdb.org/t/p/w1280${
     movie ? movie.backdrop_path : ""
@@ -45,8 +44,12 @@ const HeroBanner = () => {
         }}
       />
 
-      <ProtectedHeader/>
-      <HeroContent movie={movie} onClick={()=>setSelectedMovie(movie)} onPlay={()=>setWatchMovieId(movie!.id)}/>
+      <ProtectedHeader />
+      <HeroContent
+        movie={movie}
+        onClick={() => setSelectedMovie(movie)}
+        onPlay={() => setWatchMovieId(movie!.id)}
+      />
 
       <div
         className="
@@ -69,22 +72,26 @@ const HeroBanner = () => {
       bg-[#000000]/10
     "
       />
-{selectedMovie && (
-  <MovieDetailsModal
-    movie={selectedMovie}
-    onClose={() => setSelectedMovie(null)}
-    onPlay={() => {
-      setWatchMovieId(selectedMovie.id);
-      setSelectedMovie(null);
-    }}
-  />
-)}
-      {watchMovieId && <Watch onClose={()=>{
-        setWatchMovieId(null);
-        setWatchingMovieId(null)  
-      }}
-      onClick={()=>setWatchingMovieId(watchMovieId)}
-      tmdbId={watchMovieId}/>}
+      {selectedMovie && (
+        <MovieDetailsModal
+          movie={selectedMovie}
+          onClose={() => setSelectedMovie(null)}
+          onPlay={() => {
+            setWatchMovieId(selectedMovie.id);
+            setSelectedMovie(null);
+          }}
+        />
+      )}
+      {watchMovieId && (
+        <Watch
+          onClose={() => {
+            setWatchMovieId(null);
+            setWatchingMovieId(null);
+          }}
+          onClick={() => setWatchingMovieId(watchMovieId)}
+          tmdbId={watchMovieId}
+        />
+      )}
     </div>
   );
 };

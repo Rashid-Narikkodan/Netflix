@@ -17,7 +17,7 @@ function App() {
 
         {/* Public auth routes */}
         <Route element={<PublicRoute />}>
-        <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<Auth />}>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />

@@ -43,9 +43,7 @@ const MovieCard = ({ movie, onClose }: MovieProps) => {
         {/* Content */}
         <div className="relative -mt-20 px-6 pb-6">
           {/* Title */}
-          <h2 className="mb-3 text-2xl font-bold text-white">
-            {movie.title}
-          </h2>
+          <h2 className="mb-3 text-2xl font-bold text-white">{movie.title}</h2>
 
           {/* Meta Row */}
           <div className="mb-3 flex flex-wrap items-center gap-2 text-xs text-gray-300">
@@ -57,9 +55,7 @@ const MovieCard = ({ movie, onClose }: MovieProps) => {
               ⭐ {movie.vote_average.toFixed(1)}
             </span>
 
-            <span className="rounded bg-white/20 px-2 py-0.5">
-              Movie
-            </span>
+            <span className="rounded bg-white/20 px-2 py-0.5">Movie</span>
           </div>
 
           {/* Description */}

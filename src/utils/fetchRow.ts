@@ -11,7 +11,7 @@ export async function fetchRows(): Promise<MovieRow[]> {
 
       return {
         title: row.title,
-        movies: data.results
+        movies: data.results,
       };
     })
   );

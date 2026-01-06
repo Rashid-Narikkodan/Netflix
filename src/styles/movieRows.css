@@ -1,4 +1,4 @@
-.rows{
+.rows {
   display: flex;
   overflow-x: auto;
   overflow-y: visible;
@@ -10,7 +10,7 @@
   display: none; /* hide scrollbar */
 }
 
-.movie-card{
+.movie-card {
   overflow-x: auto;
   overflow-y: visible;
   scroll-snap-type: x mandatory;

@@ -135,7 +135,8 @@ const MovieDetailsModal = ({
                   movie={movie}
                   onClick={() => setActiveMovie(movie)}
                 />
-              ))}VideoPl
+              ))}
+              VideoPl
             </div>
           )}
         </div>

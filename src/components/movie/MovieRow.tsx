@@ -1,6 +1,6 @@
 import type { MovieDetails } from "../../types/movie";
 import MovieRowCard from "./cards/MovieRowCard";
-import '../../styles/movieRows.css'
+import "../../styles/movieRows.css";
 import { useState } from "react";
 import MovieDetailsModal from "./modal/MovieDetailsModal";
 import Watch from "../../pages/watch/Watch";
@@ -15,7 +15,7 @@ type Props = {
 const MovieRow = ({ row }: Props) => {
   const [detailsMovie, setDetailsMovie] = useState<MovieDetails | null>(null);
   const [watchMovie, setWatchMovie] = useState<MovieDetails | null>(null);
-  const {setWatchingMovieId} = useWatch()
+  const { setWatchingMovieId } = useWatch();
 
   return (
     <section className="px-6 py-4">
@@ -47,11 +47,14 @@ const MovieRow = ({ row }: Props) => {
       {watchMovie && (
         <Watch
           tmdbId={watchMovie.id}
-          onClose={() => {setWatchMovie(null);setWatchingMovieId(null)}}
-          onClick={()=>setWatchingMovieId(watchMovie.id)}
+          onClose={() => {
+            setWatchMovie(null);
+            setWatchingMovieId(null);
+          }}
+          onClick={() => setWatchingMovieId(watchMovie.id)}
         />
       )}
     </section>
   );
 };
-export default MovieRow
+export default MovieRow;

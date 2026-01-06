@@ -8,8 +8,6 @@ const Home = () => {
       <div className="relative z-10 bg-[#161616] pt-6">
         <RowContainer />
       </div>
-      
-
     </div>
   );
 };

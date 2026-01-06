@@ -2,7 +2,13 @@ import type { MovieDetails } from "../../../types/movie";
 
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w780";
 
-const MovieRowCard = ({ movie, onClick }: { movie: MovieDetails, onClick:()=>void }) => {
+const MovieRowCard = ({
+  movie,
+  onClick,
+}: {
+  movie: MovieDetails;
+  onClick: () => void;
+}) => {
   return (
     <div
       className="

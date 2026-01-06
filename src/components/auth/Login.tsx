@@ -3,11 +3,10 @@ import { useAuth } from "../../context/AuthContext";
 import Input from "../common/Input";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const { login } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,12 +23,14 @@ const Login = () => {
     if (!email.trim()) {
       setEmailError("Please enter a valid email or mobile number.");
       hasError = true;
-    } else if(!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)){
-        setEmailError('Please enter a valid email address.')
-        hasError=true
-      } else {
+    } else if (
+      !email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+    ) {
+      setEmailError("Please enter a valid email address.");
+      hasError = true;
+    } else {
       setEmailError(null);
-      }
+    }
 
     if (password.length < 4 || password.length > 60) {
       setPasswordError(
@@ -45,7 +46,9 @@ const Login = () => {
     try {
       await login(email.trim(), password);
     } catch {
-      setFormError("Sorry, we can't find an account with this email address. Please try again or create a new account.");
+      setFormError(
+        "Sorry, we can't find an account with this email address. Please try again or create a new account."
+      );
     }
   };
 
@@ -53,9 +56,11 @@ const Login = () => {
     <div className="w-full max-w-md rounded bg-black/75 p-10 text-white">
       <h3 className="mb-8 text-3xl font-semibold">Sign In</h3>
 
-        {formError && (
-          <div className="mb-5 mt-2 p-5 bg-yellow-400 rounded text-md text-black">{formError}</div>
-        )}
+      {formError && (
+        <div className="mb-5 mt-2 p-5 bg-yellow-400 rounded text-md text-black">
+          {formError}
+        </div>
+      )}
 
       <form onSubmit={handleSubmit}>
         <Input
@@ -81,7 +86,6 @@ const Login = () => {
         </button>
       </form>
 
-
       <div className="mt-6 flex items-center text-sm text-zinc-400">
         <input type="checkbox" className="mr-2 accent-zinc-400" />
         <label>Remember me</label>
@@ -89,11 +93,14 @@ const Login = () => {
 
       <p className="mt-4 text-sm text-zinc-400">
         New to Netflix?{" "}
-        <span onClick={()=>navigate('/auth/signup')} className="cursor-pointer text-white hover:underline">
+        <span
+          onClick={() => navigate("/auth/signup")}
+          className="cursor-pointer text-white hover:underline"
+        >
           Sign up now
         </span>
       </p>
-            <p className="text-xs text-zinc-500 mt-6">
+      <p className="text-xs text-zinc-500 mt-6">
         This page is protected by Google reCAPTCHA to ensure you're not a bot.
       </p>
 

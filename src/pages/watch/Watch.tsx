@@ -4,20 +4,20 @@ import { getMovieVideos } from "../../services/tmdb.service";
 import Loader from "../../components/common/Loader";
 import { ArrowLeft } from "lucide-react";
 
-type Video={
+type Video = {
   id: string;
   key: string;
   site: string;
   type: string;
   official: boolean;
-}
+};
 type WatchProps = {
   tmdbId: number;
   onClose: () => void;
-  onClick:()=>void
+  onClick: () => void;
 };
 
-const Watch = ({ tmdbId, onClose,onClick }: WatchProps) => {
+const Watch = ({ tmdbId, onClose, onClick }: WatchProps) => {
   const [videoKey, setVideoKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,10 +27,8 @@ const Watch = ({ tmdbId, onClose,onClick }: WatchProps) => {
         const res = await getMovieVideos(tmdbId);
 
         const trailer = res.results.find(
-          (v:Video) =>
-            v.site === "YouTube" &&
-            v.type === "Trailer" &&
-            v.official === true
+          (v: Video) =>
+            v.site === "YouTube" && v.type === "Trailer" && v.official === true
         );
 
         setVideoKey(trailer?.key ?? null);
@@ -39,12 +37,12 @@ const Watch = ({ tmdbId, onClose,onClick }: WatchProps) => {
         setVideoKey(null);
       } finally {
         setLoading(false);
-        onClick?.()
+        onClick?.();
       }
     };
 
     fetchTrailer();
-  }, [tmdbId,onClick]);
+  }, [tmdbId, onClick]);
 
   if (loading) {
     return <Loader />;
@@ -59,7 +57,7 @@ const Watch = ({ tmdbId, onClose,onClick }: WatchProps) => {
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black" >
+    <div className="fixed inset-0 z-50 bg-black">
       {/* Close button */}
       <button
         onClick={onClose}

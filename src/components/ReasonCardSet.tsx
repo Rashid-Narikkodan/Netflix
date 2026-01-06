@@ -1,10 +1,5 @@
 import ReasonCard from "./ReasonCard";
-import {
-  Tv,
-  Download,
-  Smartphone,
-  Smile,
-} from "lucide-react";
+import { Tv, Download, Smartphone, Smile } from "lucide-react";
 
 const ReasonCardSet = () => {
   return (

@@ -9,14 +9,14 @@ const TrendingMovies = () => {
   const [movies, setMovies] = useState<MovieDetails[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedMovie, setSelectedMovie] = useState<MovieDetails|null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<MovieDetails | null>(null);
 
   useEffect(() => {
     const fetchTrending = async () => {
       try {
         const data = await getTrendingMovies();
         setMovies(data.results);
-        console.log(data.results)
+        console.log(data.results);
       } catch (err) {
         console.error(err);
         setError("Failed to load movies");
@@ -39,10 +39,15 @@ const TrendingMovies = () => {
 
       <div className="trending-carousel">
         {movies.map((movie, idx) => (
-          <TrendingCard onClick={()=>setSelectedMovie(movie)} key={movie.id} card={movie} index={idx + 1} />
+          <TrendingCard
+            onClick={() => setSelectedMovie(movie)}
+            key={movie.id}
+            card={movie}
+            index={idx + 1}
+          />
         ))}
       </div>
-      <MovieCard movie={selectedMovie} onClose={()=>setSelectedMovie(null)}/>
+      <MovieCard movie={selectedMovie} onClose={() => setSelectedMovie(null)} />
     </section>
   );
 };

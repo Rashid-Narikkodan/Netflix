@@ -24,7 +24,6 @@ const ProtectedHeader = () => {
       <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-10">
         {/* Left */}
         <div className="flex items-center gap-4 md:gap-10">
-
           {/* Mobile Menu Button */}
           <button
             className="md:hidden text-white"
@@ -50,7 +49,6 @@ const ProtectedHeader = () => {
               </NavLink>
             ))}
           </nav>
-
         </div>
 
         {/* Right */}

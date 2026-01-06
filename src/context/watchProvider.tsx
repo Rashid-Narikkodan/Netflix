@@ -10,4 +10,3 @@ export const WatchProvider = ({ children }: { children: React.ReactNode }) => {
     </WatchContext.Provider>
   );
 };
-

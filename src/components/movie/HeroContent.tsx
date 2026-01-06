@@ -4,11 +4,11 @@ import { Info } from "lucide-react";
 
 type Props = {
   movie: MovieDetails | null;
-  onClick:()=>void;
-  onPlay:()=>void
+  onClick: () => void;
+  onPlay: () => void;
 };
 
-const HeroContent = ({ movie,onClick,onPlay}: Props) => {
+const HeroContent = ({ movie, onClick, onPlay }: Props) => {
   if (!movie) return;
   const title = movie.title || movie.original_title;
   const year = movie.release_date
@@ -27,10 +27,7 @@ const HeroContent = ({ movie,onClick,onPlay}: Props) => {
 
       {/* Title */}
       <h1 className="text-7xl font-extrabold leading-tight mb-4 relative">
-        <img
-          src={NETFLIX}
-          className="size-30 absolute -top-16 -left-8"
-        />
+        <img src={NETFLIX} className="size-30 absolute -top-16 -left-8" />
         {title}
       </h1>
 
@@ -51,11 +48,17 @@ const HeroContent = ({ movie,onClick,onPlay}: Props) => {
 
       {/* Actions */}
       <div className="flex items-center gap-3">
-        <button onClick={onPlay} className="flex items-center gap-2 rounded bg-white px-6 py-2 text-black font-semibold hover:bg-gray-200 transition">
+        <button
+          onClick={onPlay}
+          className="flex items-center gap-2 rounded bg-white px-6 py-2 text-black font-semibold hover:bg-gray-200 transition"
+        >
           ▶ Play
         </button>
 
-        <button onClick={onClick} className="flex items-center gap-2 rounded bg-gray-500/70 px-6 py-2 text-white font-semibold hover:bg-gray-500 transition">
+        <button
+          onClick={onClick}
+          className="flex items-center gap-2 rounded bg-gray-500/70 px-6 py-2 text-white font-semibold hover:bg-gray-500 transition"
+        >
           <Info /> More Info
         </button>
       </div>

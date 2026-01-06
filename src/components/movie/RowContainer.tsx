@@ -17,16 +17,12 @@ const RowContainer = () => {
   }, []);
 
   if (loading) {
-    return (
-      <Loader />
-    );
+    return <Loader />;
   }
 
   if (error) {
     return (
-      <p className="px-6 py-10 text-sm text-red-500">
-        Failed to load movies
-      </p>
+      <p className="px-6 py-10 text-sm text-red-500">Failed to load movies</p>
     );
   }
 

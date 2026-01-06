@@ -4,9 +4,8 @@ type InputProps = {
   value: string;
   onChange: (v: string) => void;
   error?: string | null;
-  style?:string,
-}
-;
+  style?: string;
+};
 
 const Input = ({
   label,
@@ -14,10 +13,10 @@ const Input = ({
   value,
   onChange,
   error,
-  style
+  style,
 }: InputProps) => {
   return (
-    <div className='mb-4'>
+    <div className="mb-4">
       <div
         className={`relative rounded border ${
           error ? "border-red-500" : "border-zinc-700"
@@ -27,7 +26,9 @@ const Input = ({
           type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`peer w-full bg-transparent px-4 pt-5 pb-2 text-white focus:outline-none ${style? style :''}`}
+          className={`peer w-full bg-transparent px-4 pt-5 pb-2 text-white focus:outline-none ${
+            style ? style : ""
+          }`}
         />
 
         <label
