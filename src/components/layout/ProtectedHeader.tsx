@@ -3,11 +3,16 @@ import { NavLink } from "react-router-dom";
 import { Menu, X, Search, Bell } from "lucide-react";
 import Netflix from "../../assets/icons/netflix.svg";
 import { useWatch } from "../../context/watchContext";
+import { LogoutService } from "../../services/auth.service";
 
 const ProtectedHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { watchingMovieId } = useWatch();
   if (watchingMovieId) return null;
+
+  const handleClick=()=>{
+    LogoutService()
+  }
 
   const navItems = [
     "Home",
@@ -66,6 +71,11 @@ const ProtectedHeader = () => {
           <div className="h-8 w-8 rounded bg-blue-600 flex items-center justify-center text-sm font-semibold text-white">
             R
           </div>
+          
+          <button onClick={handleClick} className="px-2 py-1 rounded bg-red-500">
+            Logout
+          </button>
+
         </div>
       </div>
 
