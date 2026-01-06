@@ -25,18 +25,16 @@ const VideoPlayer = ({ src }: VideoPlayerProps) => {
     >
       {/* Video */}
       <video
-        ref={videoRef}
-        src={src}
-        className="h-full w-full object-contain"
-        autoPlay
-      />
+      src={src}
+      className="h-full w-full"
+      autoPlay
+    />
 
       {/* Center Play Button (Netflix feel) */}
       {!isPlaying && (
         <button
           onClick={togglePlay}
-          className="absolute inset-0 flex items-center justify-center"
-        >
+          className="absolute inset-0 flex items-center justify-center">
           <div className="rounded-full bg-black/60 p-6 backdrop-blur">
             ▶
           </div>
@@ -44,7 +42,7 @@ const VideoPlayer = ({ src }: VideoPlayerProps) => {
       )}
 
       {/* Bottom Gradient */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/90 to-transparent" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-linear-to-t from-black/90 to-transparent" />
 
       {/* Controls */}
       <div

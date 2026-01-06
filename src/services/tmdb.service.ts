@@ -64,3 +64,24 @@ export const getRelatedMovies = async (movieId: number, page = 1) => {
   return res.data.results; // array of MovieDetails
 };
 
+export const getMovieVideos = async (movieId: number) => {
+  const res = await tmdb.get(`/movie/${movieId}/videos`);
+
+  if (res.status !== 200) {
+    throw new Error("TMDB movie videos fetch failed");
+  }
+
+  return res.data; 
+  // shape:
+  // {
+  //   id: number,
+  //   results: Array<{
+  //     id: string;
+  //     key: string;
+  //     site: string;
+  //     type: string;
+  //     official: boolean;
+  //   }>
+  // }
+};
+

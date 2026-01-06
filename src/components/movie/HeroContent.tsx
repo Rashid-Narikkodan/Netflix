@@ -4,16 +4,16 @@ import { Info } from "lucide-react";
 
 type Props = {
   movie: MovieDetails | null;
-  onClick:()=>void
+  onClick:()=>void;
+  onPlay:()=>void
 };
 
-const HeroContent = ({ movie,onClick}: Props) => {
+const HeroContent = ({ movie,onClick,onPlay}: Props) => {
   if (!movie) return;
   const title = movie.title || movie.original_title;
   const year = movie.release_date
     ? new Date(movie.release_date).getFullYear()
     : null;
-
   const rating = movie.vote_average ? movie.vote_average.toFixed(1) : null;
 
   const overview =
@@ -51,7 +51,7 @@ const HeroContent = ({ movie,onClick}: Props) => {
 
       {/* Actions */}
       <div className="flex items-center gap-3">
-        <button className="flex items-center gap-2 rounded bg-white px-6 py-2 text-black font-semibold hover:bg-gray-200 transition">
+        <button onClick={onPlay} className="flex items-center gap-2 rounded bg-white px-6 py-2 text-black font-semibold hover:bg-gray-200 transition">
           ▶ Play
         </button>
 

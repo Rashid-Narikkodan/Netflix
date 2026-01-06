@@ -2,9 +2,12 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X, Search, Bell } from "lucide-react";
 import Netflix from "../../assets/icons/netflix.svg";
+import { useWatch } from "../../context/watchContext";
 
 const ProtectedHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { watchingMovieId } = useWatch();
+  if (watchingMovieId) return null;
 
   const navItems = [
     "Home",

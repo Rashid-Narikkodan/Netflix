@@ -14,10 +14,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public landing page */}
-        <Route path="/" element={<LandingPage />} />
 
         {/* Public auth routes */}
         <Route element={<PublicRoute />}>
+        <Route path="/" element={<LandingPage />} />
           <Route path="/auth" element={<Auth />}>
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
