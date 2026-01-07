@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import MovieRow from "./MovieRow";
-import { fetchRows } from "../../utils/fetchRow";
-import type { MovieRow as MovieRowType } from "../../types/row";
-import Loader from "../common/Loader";
+import { fetchRows } from "../../../utils/fetchRow";
+import type { MovieRow as MovieRowType } from "../../../types/row";
+import Loader from "../../common/Loader";
 
 const RowContainer = () => {
   const [rows, setRows] = useState<MovieRowType[]>([]);

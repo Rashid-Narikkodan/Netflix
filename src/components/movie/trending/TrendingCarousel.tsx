@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getTrendingMovies } from "../../services/tmdb.service";
-import TrendingCard from "./cards/TrendingCard";
-import type { MovieDetails } from "../../types/movie";
-import "../../styles/trending.css";
-import MovieCard from "./modal/TrendingModal";
+import { getTrendingMovies } from "../../../services/tmdb.service";
+import TrendingCard from "./TrendingCard";
+import type { MovieDetails } from "../../../types/movie";
+import "../../../styles/trending.css";
+import MovieCard from "./TrendingModal";
 
 const TrendingMovies = () => {
   const [movies, setMovies] = useState<MovieDetails[]>([]);
@@ -16,7 +16,6 @@ const TrendingMovies = () => {
       try {
         const data = await getTrendingMovies();
         setMovies(data.results);
-        console.log(data.results);
       } catch (err) {
         console.error(err);
         setError("Failed to load movies");

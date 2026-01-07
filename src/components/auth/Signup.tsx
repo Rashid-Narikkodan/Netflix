@@ -54,8 +54,7 @@ const Signup = () => {
     if (hasError) return;
 
     try {
-      const data = await signup(email.trim(), password.trim());
-      console.log("Success:", data);
+      signup(email.trim(), password.trim());
       // Redirect happens automatically via your useEffect listener
     } catch (error: unknown) {
       let message = "An unexpected error occurred.";

@@ -1,5 +1,5 @@
-import HeroBanner from "../../components/movie/HeroBanner";
-import RowContainer from "../../components/movie/RowContainer";
+import HeroBanner from "../../components/movie/hero/HeroBanner";
+import RowContainer from "../../components/movie/Movie-List/RowContainer";
 
 const Home = () => {
   return (

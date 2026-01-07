@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
+import { addToWatchlist, isInWatchlist } from "../../../services/db.service";
 import type { MovieDetails } from "../../../types/movie";
-import { Plus } from "lucide-react";
+import { Plus, Check } from "lucide-react";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
@@ -13,6 +15,17 @@ const RelatedCard = ({
   const releaseYear = movie.release_date
     ? new Date(movie.release_date).getFullYear()
     : "N/A";
+
+    const [isListedToWatch,setListed]=useState(false)
+
+    useEffect(()=>{
+      const isListed=()=>{
+        isInWatchlist(movie.id)
+        .then(setListed)
+        .finally()
+      }
+     isListed()
+    })
 
   return (
     <div
@@ -39,8 +52,8 @@ const RelatedCard = ({
             </span>
             <span className="pl-4">{releaseYear}</span>
           </div>
-          <button className="h-10 w-10 rounded-full border border-zinc-500 flex items-center justify-center hover:border-white transition">
-            <Plus size={18} />
+          <button onClick={(e)=>{e.stopPropagation();addToWatchlist(movie);setListed(true)}} disabled={isListedToWatch} className="h-10 w-10 rounded-full border border-zinc-500 flex items-center justify-center hover:border-white active:bg-[#aaaaaa] active:text-black transition">
+            { isListedToWatch ? <Check size={18}/> :<Plus size={18} />}
           </button>
         </div>
 

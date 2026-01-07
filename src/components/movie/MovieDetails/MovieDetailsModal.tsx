@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import type { MovieDetails } from "../../../types/movie";
-import { X, Plus, ThumbsUp } from "lucide-react";
+import { X, Plus, ThumbsUp, Check } from "lucide-react";
 import { getRelatedMovies } from "../../../services/tmdb.service";
 import Loader from "../../common/Loader";
-import RelatedCard from "../cards/RelatedCard";
+import RelatedCard from "./RelatedCard";
+import { addToWatchlist, isInWatchlist } from "../../../services/db.service";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
@@ -20,11 +21,18 @@ const MovieDetailsModal = ({
   const [relatedMovies, setRelatedMovies] = useState<MovieDetails[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isListedToWatch,setListed]=useState(false)
 
   /** Sync when parent movie changes */
   useEffect(() => {
     setActiveMovie(movie);
   }, [movie]);
+
+  useEffect(()=>{
+    isInWatchlist(activeMovie.id)
+    .then((isIt)=>setListed(isIt))
+    .catch(err=>setError(err.message))
+  },[activeMovie])
 
   /** Fetch related movies */
   useEffect(() => {
@@ -93,8 +101,8 @@ const MovieDetailsModal = ({
                 ▶ Play
               </button>
 
-              <button className="h-10 w-10 rounded-full border border-zinc-500 flex items-center justify-center">
-                <Plus size={18} />
+              <button onClick={()=>{addToWatchlist(activeMovie);setListed(true)}} disabled={isListedToWatch} className="h-10 w-10 rounded-full border border-zinc-500 flex items-center justify-center hover:bg-white hover:text-black hover:border-black active:bg-[#aaaaaa] ">
+                {isListedToWatch ? <Check size={18}/> :<Plus size={18} />}
               </button>
 
               <button className="h-10 w-10 rounded-full border border-zinc-500 flex items-center justify-center">
@@ -136,7 +144,6 @@ const MovieDetailsModal = ({
                   onClick={() => setActiveMovie(movie)}
                 />
               ))}
-              VideoPl
             </div>
           )}
         </div>

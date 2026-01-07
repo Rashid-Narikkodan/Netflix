@@ -71,17 +71,19 @@ export const getMovieVideos = async (movieId: number) => {
     throw new Error("TMDB movie videos fetch failed");
   }
 
-  return res.data; 
-  // shape:
-  // {
-  //   id: number,
-  //   results: Array<{
-  //     id: string;
-  //     key: string;
-  //     site: string;
-  //     type: string;
-  //     official: boolean;
-  //   }>
-  // }
+  return res.data;
 };
 
+export const getMovieDetails = async (movieId: number) => {
+  const res = await tmdb.get(`/movie/${movieId}`, {
+    params: {
+      append_to_response: "credits,images,videos",
+    },
+  });
+
+  if (res.status !== 200) {
+    throw new Error("TMDB movie details fetch failed");
+  }
+  console.log("getMovieDetails"+res.data)
+  return res.data;
+};

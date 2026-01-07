@@ -1,5 +1,5 @@
-import type { MovieDetails } from "../../types/movie";
-import NETFLIX from "../../assets/icons/netflix.svg";
+import type { MovieDetails } from "../../../types/movie";
+import NETFLIX from "../../../assets/icons/netflix.svg";
 import { Info } from "lucide-react";
 
 type Props = {

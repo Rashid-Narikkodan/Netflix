@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Menu, X, Search, Bell } from "lucide-react";
 import Netflix from "../../assets/icons/netflix.svg";
 import { useWatch } from "../../context/watchContext";
@@ -8,6 +8,7 @@ import { LogoutService } from "../../services/auth.service";
 const ProtectedHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { watchingMovieId } = useWatch();
+  const navigate = useNavigate()
   if (watchingMovieId) return null;
 
   const handleClick=()=>{
@@ -20,7 +21,6 @@ const ProtectedHeader = () => {
     "Movies",
     "Games",
     "New & Popular",
-    "My List",
     "Browse by Languages",
   ];
 
@@ -37,6 +37,7 @@ const ProtectedHeader = () => {
             <Menu size={24} />
           </button>
           <img
+            onClick={()=>navigate('/')}
             src={Netflix}
             alt="Netflix"
             className="h-7 w-auto cursor-pointer"
@@ -53,6 +54,13 @@ const ProtectedHeader = () => {
                 {item}
               </NavLink>
             ))}
+              <NavLink
+                key={'My List'}
+                to="/watchlist"
+                className="hover:text-white transition"
+              >
+                My List
+              </NavLink>
           </nav>
         </div>
 
@@ -105,6 +113,15 @@ const ProtectedHeader = () => {
                 </NavLink>
               </li>
             ))}
+            <li key={'My List'}>
+                <NavLink
+                  to="/watchlist"
+                  className="block hover:text-white transition"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                My List
+                </NavLink>
+              </li>
           </ul>
         </nav>
       </div>

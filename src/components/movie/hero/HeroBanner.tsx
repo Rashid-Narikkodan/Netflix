@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getRandomMovie } from "../../services/tmdb.service";
-import ProtectedHeader from "../layout/ProtectedHeader";
-import type { MovieDetails } from "../../types/movie";
+import { getRandomMovie } from "../../../services/tmdb.service";
+import ProtectedHeader from "../../layout/ProtectedHeader";
+import type { MovieDetails } from "../../../types/movie";
 import HeroContent from "./HeroContent";
-import MovieDetailsModal from "./modal/MovieDetailsModal";
-import Watch from "../../pages/watch/Watch";
-import Loader from "../common/Loader";
-import { useWatch } from "../../context/watchContext";
+import MovieDetailsModal from "../MovieDetails/MovieDetailsModal";
+import Watch from "../../../pages/watch/Watch";
+import Loader from "../../common/Loader";
+import { useWatch } from "../../../context/watchContext";
 
 const HeroBanner = () => {
   const [movie, setMovie] = useState<MovieDetails | null>(null);
@@ -18,7 +18,6 @@ const HeroBanner = () => {
   useEffect(() => {
     const fetchMovie = async () => {
       const m = await getRandomMovie();
-      console.log(m);
       setMovie(m);
       setLoading(false);
     };

@@ -1,7 +1,7 @@
 import Background from "../../assets/images/netflix-bg.jpg";
 import Header from "../../components/layout/Header";
 import HeroContent from "../../components/HeroContent";
-import TrendingMovies from "../../components/movie/TrendingCarousel";
+import TrendingMovies from "../../components/movie/trending/TrendingCarousel";
 import ReasonCardSet from "../../components/ReasonCardSet";
 import FAQAccordion from "../../components/FAQAccordion";
 import { FAQS } from "../../utils/FAQs";

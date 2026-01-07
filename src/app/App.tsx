@@ -5,11 +5,13 @@ import Auth from "../pages/auth/auth";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
 import Home from "../pages/home/Home";
+import WatchList from "../pages/watch/WatchList";
 
 import ProtectedRoute from "../components/common/ProtectedRoutes";
 import PublicRoute from "../components/common/PublicRoutes";
 
 function App() {
+
   return (
     <BrowserRouter>
       <Routes>
@@ -27,6 +29,7 @@ function App() {
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Home />} />
+          <Route path="/watchlist" element={<WatchList/>} />
         </Route>
       </Routes>
     </BrowserRouter>

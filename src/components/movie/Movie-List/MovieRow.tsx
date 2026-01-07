@@ -1,10 +1,10 @@
-import type { MovieDetails } from "../../types/movie";
-import MovieRowCard from "./cards/MovieRowCard";
-import "../../styles/movieRows.css";
+import type { MovieDetails } from "../../../types/movie";
+import MovieRowCard from "./MovieRowCard";
+import "../../../styles/movieRows.css";
 import { useState } from "react";
-import MovieDetailsModal from "./modal/MovieDetailsModal";
-import Watch from "../../pages/watch/Watch";
-import { useWatch } from "../../context/watchContext";
+import MovieDetailsModal from "../MovieDetails/MovieDetailsModal";
+import Watch from "../../../pages/watch/Watch";
+import { useWatch } from "../../../context/watchContext";
 type Props = {
   row: {
     title: string;
