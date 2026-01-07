@@ -17,6 +17,7 @@ const WatchListMovies = () => {
   const [watchMovieId, setWatchMovieId] = useState<number | null>(null);
   const [isLoading, setLoading] = useState(true);
   const {setWatchingMovieId}= useWatch()
+  const [trigger,setTrigger]=useState(false)
 
   useEffect(() => {
   const user = auth.currentUser;
@@ -33,7 +34,7 @@ const WatchListMovies = () => {
   };
 
   fetchWatchList();
-}, []); // ✅ VERY IMPORTANT
+}, [trigger]); // ✅ VERY IMPORTANT
 
 
   const handleMovieClick = async (item: WatchlistItem) => {
@@ -55,6 +56,7 @@ const WatchListMovies = () => {
             key={movie.movieId}
             movie={movie}
             onClick={() => handleMovieClick(movie)}
+            onDelete={()=>setTrigger(!trigger)}
           />
         ))}
       </div>
